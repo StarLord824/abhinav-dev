@@ -15,7 +15,7 @@ export default function Banner() {
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: 20,
+          duration: 2,
         }}
         style={{ width: "200%" }}
       >

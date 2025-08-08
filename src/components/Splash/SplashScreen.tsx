@@ -4,11 +4,12 @@ import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { tips } from './tips';
 import Progress from '@/components/Splash/Progress';
+import Image from 'next/image';
 
 const SplashScreen = () => {
   const [progress, setProgress] = useState(0);
   const [tip, setTip] = useState('');
-  const imagePath='/Adobe.png'
+  // const imagePath='/Adobe.png'
   useEffect(() => {
     // Set a random tip
     setTip(tips[Math.floor(Math.random() * tips.length)]);
@@ -47,13 +48,13 @@ const SplashScreen = () => {
           animate={{ scale: 1.2, rotate: 0 }}
           transition={{ duration: 1.5, ease: 'easeInOut' }}
         >
-          <img
+          <Image
             src={'/Adobe.png'}
             alt="Aurora UI/UX Banner"
-            style={{ height: 300, width: 300 }}
+            // style={{ height: 300, width: 300 }}
             // maintain original dimensions of image
-            // height={70}
-            // width={70}
+            height={70}
+            width={70}
             />
         </motion.div>
 

@@ -1,8 +1,6 @@
 import Banner from "@/components/Banner/Banner";
 import Navbar from "@/components/Navbar/Navbar";
 import Profile from "@/components/Profile/Profile";
-import Splash from "@/components/Splash/Splash";
-import SplashScreen from "@/components/Splash/SplashScreen";
 
 export default function Home() {
   return (

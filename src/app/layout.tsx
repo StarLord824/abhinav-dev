@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Playwrite_AU_NSW } from "next/font/google";
 import "./globals.css";
 import localFont from 'next/font/local';
 import Header from "@/components/Header/Header";
