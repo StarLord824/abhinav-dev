@@ -1,11 +1,12 @@
 "use client";
 import { motion } from "motion/react";
+import { tr } from "motion/react-client";
 import Image from "next/image";
 const items = Array(10).fill("Aurora UI");
 
 export default function Banner() {
   // Duplicate items for seamless scroll
-  const scrollItems = [...items, ...items, ...items];
+  const scrollItems = [...items, ...items];
   const imagePath='/Adobe.png'
   return (
     <div className="overflow-hidden flex items-center  italic font-semibold text-lg bg-white text-black h-10 w-full">
@@ -14,14 +15,18 @@ export default function Banner() {
         animate={{ x: ["0%", "-50%"] }}
         transition={{
           repeat: Infinity,
+          repeatType: "loop",
           ease: "linear",
-          duration: 2,
+          duration: 20,
         }}
-        style={{ width: "200%" }}
+        // whileHover={{stop}}
+        // style={{ width: "200%" }}
+        style={{display: "inline-flex"}}
       >
         {scrollItems.map((item, idx) => (
           <div key={idx} className="flex gap-3 justify-center items-center px-20">
             {item}
+            {/* {idx} */}
             <Image
               src={imagePath}
               alt="Aurora UI/UX Banner"

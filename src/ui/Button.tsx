@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from "motion/react";
+import { useRouter } from "next/router";
 
 // props : {/*height, width, text, bg-color, shadow-color */}
 interface ButtonProps {
     content : string;
 }
 export default function Button(props : ButtonProps) {
+    // const router= useRouter()
     return (
         <motion.div className="w-[203px] h-[80px] hover-w-[213px]"
          >
@@ -15,7 +17,7 @@ export default function Button(props : ButtonProps) {
                     <div className="font-bold text-3xl text-black heavy-stroke-text">
                         {props.content} 
                     </div>
-                    <div className="absolute w-1 h-[7px] top-1.5 right-2 bg-white rounded-[2.1px/3.3px] rotate-[-35.23deg]" />
+                    <div className="absolute w-1.5 h-[9px] top-1.5 right-2 bg-white rounded-[6px/8px] rotate-[-35.23deg]" />
                 </div>
             </button>
         </motion.div>
