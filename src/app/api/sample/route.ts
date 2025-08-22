@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 export function GET( Request : Request ) {
+    const body = await Request.json(); 
     return Response.json({
         email : "test@test.com",
         name : "test",

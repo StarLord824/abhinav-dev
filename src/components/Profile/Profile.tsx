@@ -1,4 +1,4 @@
-import NavButtons from "@/ui/NavButtons";
+// import NavButtons from "@/ui/NavButtons";
 import Image from "next/image";
 
 export default function Profile() {

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "motion/react";
-import { tr } from "motion/react-client";
+// import { tr } from "motion/react-client";
 import Image from "next/image";
 const items = Array(10).fill("Aurora UI");
 
