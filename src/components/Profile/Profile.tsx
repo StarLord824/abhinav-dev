@@ -17,8 +17,43 @@ export default function Profile() {
                     <h1 className="font-bold text-2xl ">Abhinav Shukla</h1>
                     <h4 className="font-semibold text-blue-300">Full Stack Developer!</h4>
                 </div>
-                <div>
-                    Java, js
+                <div className="flex gap-2 items-center justify-center">
+                    <Image
+                        src={'/langs/cpp.svg'}
+                        alt="C++"
+                        height={50}
+                        width={50}
+                    />
+                    <Image
+                        src={'/langs/Typescript.svg'}
+                        alt="Typescript"
+                        height={50}
+                        width={50}
+                    />
+                    <Image
+                        src={'/langs/js.svg'}
+                        alt="Javascipt"
+                        height={50}
+                        width={50}
+                    />
+                    <Image
+                        src={"/langs/Go.svg"}
+                        alt="Go"
+                        height={50}
+                        width={50}
+                    />
+                    <Image
+                        src="/langs/java.svg"
+                        alt="Java"
+                        height={50}
+                        width={50}
+                    />
+                    <Image
+                        src="/langs/python.svg"
+                        alt="Python"
+                        height={50}
+                        width={50}                    
+                    />
                 </div>
             </div>
         </div>
