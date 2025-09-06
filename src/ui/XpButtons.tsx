@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 interface XpButtonProps {
@@ -296,10 +297,12 @@ export default function XpButton({ text, amount, logo, isHighlighted = false }: 
                     )}
                     
                     {/* Logo Image with Enhanced Effects */}
-                    <img 
+                    <Image
                         src={logo}
                         alt={`${text} experience icon`} 
-                        className={`relative z-10 w-12 h-12 object-contain p-2 transition-all duration-700 ${
+                        height={12}
+                        width={12}
+                        className={`relative z-10 object-contain p-2 transition-all duration-700 ${
                             isHighlighted ? 'brightness-125 saturate-125' : isHovered ? 'brightness-110 saturate-110' : ''
                         }`}
                         style={{

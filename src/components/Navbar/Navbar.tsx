@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useState, useEffect, useMemo } from "react";
 
 interface Particle {
     id: number;
@@ -9,13 +10,13 @@ interface Particle {
     delay: number;
 }
 export default function Navbar() {
-    const sections = [
+    const sections = useMemo(() => [
         { id: 'home', Icon: 'HomeIcon', Logo: '/navLogos/home.png' },
         { id: 'projects', Icon: 'ProjectsIcon', Logo: '/navLogos/projects.png' },
         { id: 'blog', Icon: 'BlogIcon', Logo: '/navLogos/blogs.png' },
         { id: 'about', Icon: 'AboutIcon', Logo: '/navLogos/about.png' },
         { id: 'contact', Icon: 'ContactIcon', Logo: '/navLogos/contact.png' },
-    ];
+    ], []);
     
     const [activeSection, setActiveSection] = useState('home');
     const [isHovered, setIsHovered] = useState(false);
@@ -344,10 +345,12 @@ export default function Navbar() {
                                     />
                                     
                                     {/* Enhanced Icon */}
-                                    <img 
+                                    <Image
                                         src={section.Icon}
                                         alt={`${section.id} navigation icon`} 
-                                        className={`relative z-10 w-10 h-10 object-contain transition-all duration-700 ${
+                                        height={10}
+                                        width={10}
+                                        className={`relative z-10 object-contain transition-all duration-700 ${
                                             isActive 
                                                 ? 'brightness-125 saturate-125' 
                                                 : 'brightness-110 saturate-110 group-hover:brightness-120 group-hover:saturate-120'
