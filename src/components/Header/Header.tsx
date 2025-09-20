@@ -16,11 +16,3 @@ export default function Header() {
         </div>
     )
 }
-
-// export function HeaderBar( props : {logoPath : string, value : number, max : number, color : string}) {
-//     return (
-//         <div>
-            
-//         </div>
-//     )
-// }

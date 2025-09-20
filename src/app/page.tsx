@@ -7,14 +7,14 @@ import Resume from "@/ui/Resume";
 export default function Home() {
   return (
     <div className="snap-y snap-mandatory font-sans">
-      <Navbar />
+      {/* <Navbar /> */}
       
       {/* Home Section */}
       <section 
         id="home"
         className="snap-start flex flex-col items-start h-screen w-full bg-violet-800 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:30px_30px]"
       >
-        <Profile/>
+        {/* <Profile/> */}
         <Resume/>
         <NavLinks/>
       </section>
