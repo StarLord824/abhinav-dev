@@ -75,7 +75,7 @@ export default function Floating2DResumeObject() {
   return (
     <a href={resumePath} target="_blank" rel="noopener noreferrer">
       <motion.div 
-        className="absolute top-11/20 right-1/13 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer group [perspective:1000px]"
+        className="absolute top-1/2 right-1/10 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer group [perspective:1000px]"
         variants={floatAnimation}
         animate="animate"
         // style={{ perspective: '1000px' }}
