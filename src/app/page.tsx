@@ -1,5 +1,5 @@
 import Banner from "@/components/Banner/Banner";
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/Navbar";
 import NavLinks from "@/components/NavLinks/NavLinks";
 import Profile from "@/components/Profile/Profile";
 import Resume from "@/ui/Resume";
@@ -7,7 +7,7 @@ import Resume from "@/ui/Resume";
 export default function Home() {
   return (
     <div className="snap-y snap-mandatory font-sans">
-      {/* <Navbar /> */}
+      <Navbar />
       
       {/* Home Section */}
       <section 

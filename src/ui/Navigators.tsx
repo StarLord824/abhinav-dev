@@ -1,16 +1,14 @@
 'use client';
 
 import { motion } from "motion/react";
-// import { useRouter } from "next/router";
 
-// props : {/*height, width, text, bg-color, shadow-color */}
 interface Props {
-    content : string;
-    sectionId : string;
+    content: string;
+    sectionId: string;
 }
-export default function Navigators(props : Props) {
-    // const router= useRouter()
-    const handleNavClick = (sectionId : string) => {
+
+export default function Navigators(props: Props) {
+    const handleNavClick = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({
@@ -19,29 +17,95 @@ export default function Navigators(props : Props) {
             });
         }
     }
-    return (
-        <motion.div className="w-[203px] h-[80px] hover-w-[213px]"
-         >
-            <button onClick={() => handleNavClick(props.sectionId)}>
-                <div className="flex justify-center items-center relative w-[203px] h-20 top-0 left-0 bg-[#ffc403] rounded-[13px] border-b-4 [border-bottom-style:solid] border-[#d36f0a] shadow-[inset_0px_4px_4px_#61523d40]" >
-                    <div className="font-bold text-3xl text-black heavy-stroke-text">
-                        {props.content} 
-                    </div>
-                    <div className="absolute w-1.5 h-[9px] top-1.5 right-2 bg-white rounded-[6px/8px] rotate-[-35.23deg]" />
-                </div>
-            </button>
-        </motion.div>
-        // <button className="relative h-20 w-60 bg-yellow-400 rounded-xl text-white font-bold ">
-        //     Button
-        //     <div className="absolute w-[10px] h-[21px] top-2 right-2 bg-white rounded-[5px/10.5px] rotate-[-40deg]" />
-        //     {/* <div className="absolute top-2 right-2 -rotate-30 h-4 w-2 bg-white rounded-full"></div> */}
-        // </button>
-    //     <button
-    //         className="relative z-10 px-8 py-5 rounded-[2rem] bg-yellow-400 shadow-lg text-black font-semibold text-lg"
-    //     >
-    //     {/* Glossy highlight */}
-    //     <div className="absolute top-2 right-2 w-6 h-3 bg-white opacity-80 rounded-full rotate-45 pointer-events-none"></div>
 
-    //   </button>
+    return (
+        <motion.div 
+            className="relative"
+            whileHover="hover"
+            whileTap="tap"
+            variants={{
+                hover: { scale: 1.02 },
+                tap: { scale: 0.98 }
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        >
+            <motion.button 
+                onClick={() => handleNavClick(props.sectionId)}
+                className="relative w-52 h-20 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 rounded-2xl"
+                variants={{
+                    hover: { y: -2 },
+                    tap: { y: 1 }
+                }}
+            >
+                {/* Main button container */}
+                <motion.div 
+                    className="flex justify-center items-center relative w-full h-full bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-2xl border-b-4 border-orange-600 shadow-lg"
+                    variants={{
+                        hover: { 
+                            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2), inset 0px 4px 8px rgba(97, 82, 61, 0.3)",
+                            borderBottomWidth: "6px"
+                        },
+                        tap: { 
+                            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15), inset 0px 2px 4px rgba(97, 82, 61, 0.4)",
+                            borderBottomWidth: "2px"
+                        }
+                    }}
+                    style={{
+                        boxShadow: "0 6px 15px rgba(0, 0, 0, 0.15), inset 0px 4px 4px rgba(97, 82, 61, 0.25)"
+                    }}
+                >
+                    {/* Text content */}
+                    <motion.div 
+                        className="font-bold text-3xl text-black heavy-stroke-text select-none"
+                        style={{
+                            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3), -1px -1px 0px rgba(255, 255, 255, 0.8)"
+                        }}
+                        variants={{
+                            hover: { scale: 1.05 },
+                            tap: { scale: 0.95 }
+                        }}
+                    >
+                        {props.content}
+                    </motion.div>
+                    
+                    {/* Glossy highlight */}
+                    <motion.div 
+                        className="absolute w-1.5 h-2 top-1.5 right-2 bg-white rounded-full opacity-80"
+                        style={{ transform: "rotate(-35deg)" }}
+                        variants={{
+                            hover: { 
+                                scale: 1.2,
+                                opacity: 0.9,
+                                boxShadow: "0 0 8px rgba(255, 255, 255, 0.8)"
+                            },
+                            tap: { 
+                                scale: 0.9,
+                                opacity: 0.7
+                            }
+                        }}
+                    />
+                    
+                    {/* Additional highlight for depth */}
+                    <motion.div 
+                        className="absolute top-2 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full"
+                        variants={{
+                            hover: { opacity: 0.6 },
+                            tap: { opacity: 0.3 }
+                        }}
+                        initial={{ opacity: 0.4 }}
+                    />
+                </motion.div>
+                
+                {/* Subtle glow effect on hover */}
+                <motion.div 
+                    className="absolute inset-0 rounded-2xl bg-gradient-to-b from-yellow-200/20 to-yellow-400/20 pointer-events-none"
+                    variants={{
+                        hover: { opacity: 1 },
+                        tap: { opacity: 0 }
+                    }}
+                    initial={{ opacity: 0 }}
+                />
+            </motion.button>
+        </motion.div>
     );
 }

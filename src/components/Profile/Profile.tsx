@@ -18,15 +18,18 @@ export default function Profile() {
   return (
     <div 
       id="profile"
-      className="flex items-center relative top-44 -left-8 h-2/3 w-3/4 [perspective:1000px]"
+      className="flex items-center relative top-44 -left-8 h-2/3 w-3/5 [perspective:1000px]"
     >
+      {/* Outer container disables pointer events */}
       <div 
-        className="flex-col h-full w-4/5 [transform-style:preserve-3d] [transform:rotateX(5deg)_rotateY(-5deg)]"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className="flex-col h-full w-full [transform-style:preserve-3d] [transform:rotateX(5deg)_rotateY(-5deg)] pointer-events-none"
       >
         {/* Profile Banner Image - 3D */}
-        <div className="relative group">
+        <div 
+          className="relative group pointer-events-auto"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <div 
             className={`relative transform transition-all duration-300 [transform-style:preserve-3d] ${
               isHovered 
@@ -70,7 +73,7 @@ export default function Profile() {
 
         {/* Profile Info Section */}
         <div 
-          className={`flex justify-between items-start px-10 relative z-10 transform transition-all duration-300 rounded-r-xl border border-white/10 backdrop-blur-[20px] bg-[linear-gradient(135deg,rgba(0,0,0,0.4)_0%,rgba(164,112,227,0.2)_50%,rgba(0,0,0,0.4)_100%)] shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1),0_0_20px_rgba(164,112,227,0.3)] [transform-style:preserve-3d] ${
+          className={`flex justify-between items-start px-10 relative z-10 transform transition-all duration-300 rounded-r-xl border border-white/10 backdrop-blur-[20px] bg-[linear-gradient(135deg,rgba(0,0,0,0.4)_0%,rgba(164,112,227,0.2)_50%,rgba(0,0,0,0.4)_100%)] shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1),0_0_20px_rgba(164,112,227,0.3)] [transform-style:preserve-3d] pointer-events-auto ${
             isHovered 
               ? 'scale-105 [transform:translateZ(4px)_scale(1.02)]' 
               : '[transform:translateZ(0px)]'
