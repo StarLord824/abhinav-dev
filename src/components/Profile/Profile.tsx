@@ -18,7 +18,7 @@ export default function Profile() {
   return (
     <div 
       id="profile"
-      className="flex items-center relative top-44 -left-8 h-2/3 w-3/5 [perspective:1000px]"
+      className="flex items-center relative top-34 -left-8 h-2/3 w-3/5 [perspective:1000px]"
     >
       {/* Outer container disables pointer events */}
       <div 

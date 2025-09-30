@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from 'next/font/local';
 import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 
 const clashFonts = localFont({
   variable: '--font-geist-supercell',
-  src: './fonts/supercell.otf'
+  src: '/fonts/supercell.otf'
 })
 
 const clashFontsBold = localFont({
   variable: '--font-geist-supercell-bold',
-  src: './fonts/supercell_Bold.otf'
+  src: '/fonts/supercell_Bold.otf'
 })
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${clashFonts.variable} ${clashFontsBold.variable} antialiased`}
       >
         <Header/>
+        <Navbar />
         {children}
       </body>
     </html>

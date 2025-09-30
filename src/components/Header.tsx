@@ -11,7 +11,7 @@ export default function Header() {
             <div className="flex justify-evenly w-3/8 h-full  rounded-xl">
                 <NavButtons text='Contacts' logoPath='/contact.png'/>
                 <NavButtons text='Coding Profiles' logoPath='/coding.png'/>
-                <NavButtons text='News' logoPath='/News.png'/>
+                <NavButtons text='Blogs' logoPath='/News.png'/> {/* will navigate to blogpage */}
             </div>
         </div>
     )

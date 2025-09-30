@@ -7,7 +7,6 @@ import Resume from "@/ui/Resume";
 export default function Home() {
   return (
     <div className="snap-y snap-mandatory font-sans">
-      <Navbar />
       
       {/* Home Section */}
       <section 
@@ -49,15 +48,15 @@ export default function Home() {
         {/* Add your about content here */}
       </section>
       
-      <Banner/>
+      {/* <Banner/> */}
       
       {/* Contact Section */}
-      <section 
+      {/* <section 
         id="contact"
         className="snap-start h-screen w-full bg-orange-600 bg-[radial-gradient(white_1.3px,transparent_0.5px)] [background-size:30px_30px]"
-      >
+      > */}
         {/* Add your contact content here */}
-      </section>
+      {/* </section> */}
     </div>
   );
 }
