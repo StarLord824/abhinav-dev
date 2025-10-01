@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${clashFonts.variable} ${clashFontsBold.variable} antialiased`}
       >
         <Header/>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
       </body>
     </html>
