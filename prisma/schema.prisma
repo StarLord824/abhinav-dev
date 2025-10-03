@@ -27,19 +27,24 @@ model User{
 }
 
 model Blog {
-  id        Int      @id @default(autoincrement())
-  title     String
-  slug      String   @unique
-  content   String
-  authorId  Int
-  status    String   @default("DRAFT")
-  published Boolean  @default(false)
-  tags      String[]
-  thumbnail String?
-  author    User     @relation(fields: [authorId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             Int      @id @default(autoincrement())
+  title          String
+  slug           String   @unique
+  authorId       Int
+  status         Status   @default(DRAFT)
+  published      Boolean  @default(false)
+  tags           String[]              // array of tags
+  thumbnail      String?               // optional
+  content        Json                   // array of content blocks (Zod schema)
+  tableOfContent Json                   // array of TOC items
+  comments       Json?                  // optional array of comments
+  likes          Int?                   // optional likes count
+  relatedBlogs   Json?                  // optional array of related blog IDs or slugs
+  author         User     @relation(fields: [authorId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
+
 
 enum Role {
   USER

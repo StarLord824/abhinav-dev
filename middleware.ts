@@ -11,6 +11,6 @@ export async function middleware(req : NextRequest) {
 //   return NextResponse.next();
 }
 
-export const config = {
-  matcher: '/blog/:path*',
-};
+// export const config = {
+//   matcher: 'api/blogs/admin/:path*',
+// };
