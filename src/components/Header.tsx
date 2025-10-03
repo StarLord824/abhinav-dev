@@ -9,9 +9,9 @@ export default function Header() {
                 <XpButton logo={'/xpbutton/gem.svg'} amount='20+ Projects' text={'PoW'}/>
             </div>
             <div className="flex justify-evenly w-3/8 h-full  rounded-xl">
-                <NavButtons text='Contacts' logoPath='/contact.png'/>
-                <NavButtons text='Profiles' logoPath='/Polygon.svg'/>
-                <NavButtons text='Blogs' logoPath='/News.png'/> {/* will navigate to blogpage */}
+                <NavButtons text='Contacts' logoPath='/navbutton/Contacts.svg'/>
+                <NavButtons text='Profiles' logoPath='/navbutton/Codes.svg'/>
+                <NavButtons text='Blogs' logoPath='/navbutton/News.svg'/> {/* will navigate to blogpage */}
             </div>
         </div>
     )
