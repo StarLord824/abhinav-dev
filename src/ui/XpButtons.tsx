@@ -84,7 +84,7 @@ export default function XpButton({ text, amount, logo, isHighlighted = false }: 
                     alt={`${text} experience icon`} 
                     width={48}
                     height={48}
-                    className={`relative z-10 object-contain p-2 transition-all duration-300 group-hover:brightness-110 group-hover:saturate-110 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.3))]`}
+                    className={`relative z-10 object-contain p-2 transition-all duration-300 scale-125 group-hover:scale-130 group-hover:brightness-105 group-hover:saturate-110 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.3))]`}
                 />
 
                 {/* Text Overlay */}
@@ -104,7 +104,7 @@ export default function XpButton({ text, amount, logo, isHighlighted = false }: 
                 />
 
                 <div 
-                    className={`relative z-20 font-bold transition-all duration-300 text-white/85 text-base group-hover:text-white group-hover:scale-102 [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]`}
+                    className={`relative z-20 font-bold transition-all duration-300 text-white/85 text-base group-hover:text-white group-hover:scale-110 [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]`}
                 >
                     {amount}
                 </div>
