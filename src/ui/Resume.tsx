@@ -106,33 +106,15 @@ export default function Floating2DResumeObject() {
             {/* Top face gradient */}
             <div 
               className="absolute inset-0 bg-gradient-to-br from-violet-400/80 via-purple-500/90 to-indigo-600/80 rounded-2xl [transform:translateZ(8px)] [clip-path:polygon(0_0,_100%_0,_90%_100%,_10%_100%)]"
-              // style={{
-              //   transform: 'translateZ(8px)',
-              //   clipPath: 'polygon(0 0, 100% 0, 90% 100%, 10% 100%)'
-              // }}
             />
             
             {/* Side faces for 2.5D effect */}
             <div 
               className="absolute bg-gradient-to-b from-violet-600/60 to-purple-800/80 rounded-r-2xl right-[-8px] top-0 h-full w-2 [transform:rotateY(90deg)_translateZ(4px)]"
-              // style={{
-              //   width: '8px',
-              //   height: '100%',
-              //   right: '-8px',
-              //   top: '0',
-              //   transform: 'rotateY(90deg) translateZ(4px)'
-              // }}
             />
             
             <div 
               className="absolute bg-gradient-to-r from-indigo-600/60 to-purple-700/80 rounded-b-2xl right-[-8px] top-0 h-full w-2 [transform:rotateY(90deg)_translateZ(4px)]"
-              // style={{
-              //   width: '100%',
-              //   height: '8px',
-              //   bottom: '-8px',
-              //   left: '0',
-              //   transform: 'rotateX(90deg) translateZ(4px)'
-              // }}
             />
             
             {/* Content Layer */}
@@ -158,7 +140,7 @@ export default function Floating2DResumeObject() {
           </motion.div>
           
           {/* Floating particles */}
-          <motion.div 
+          {/* <motion.div 
             className="absolute -top-4 -left-2 w-1 h-1 bg-cyan-400 rounded-full opacity-60"
             variants={particleFloat}
             animate="animate"
@@ -172,7 +154,7 @@ export default function Floating2DResumeObject() {
             className="absolute top-6 -right-4 w-0.5 h-0.5 bg-violet-400 rounded-full opacity-70"
             variants={particleFloat3}
             animate="animate"
-          />
+          /> */}
         </div>
         
         {/* Enhanced tooltip with 2.5D effect */}
