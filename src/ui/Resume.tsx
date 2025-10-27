@@ -139,7 +139,7 @@
               <div className="absolute top-1 right-3 w-2 h-2 bg-white/30 rounded-full blur-sm" /> */}
             </motion.div>
             <div 
-              className={`absolute top-1/4 -left-1/4 transform -translate-x-1/2 px-3 py-1 rounded-lg backdrop-blur-sm bg-black/80 text-white text-sm font-medium border border-white/20 transition-all duration-300 pointer-events-none shadow-[0_4px_15px_rgba(0,0,0,0.3)] opacity-0 translate-y-2 group-hover:opacity-100 translate-y-0 `}
+              className={`absolute top-1/4 -left-1/4 transform -translate-x-1/2 px-3 py-1 rounded-lg backdrop-blur-sm bg-black/80 text-white text-sm font-medium border border-white/20 transition-all duration-300 pointer-events-none shadow-[0_4px_15px_rgba(0,0,0,0.3)] opacity-0 group-hover:opacity-100 translate-y-0 `}
             >
               View / Download
               <div className="absolute top-full right-1/6 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/80" />
