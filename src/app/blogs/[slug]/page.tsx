@@ -149,8 +149,8 @@ export function BlogFooter() {
     )
 }
 
-'use server'
-export async function getBlogData(slug: string) {
-    const res = await axios.get(`/api/blogs/${slug}`);
-    return res.data;
-}
+// 'use server'
+// export async function getBlogData(slug: string) {
+//     const res = await axios.get(`/api/blogs/${slug}`);
+//     return res.data;
+// }
