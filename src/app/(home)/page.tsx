@@ -6,16 +6,16 @@ import Resume from "@/ui/Resume";
 
 export default function Home() {
   return (
-    <div className="snap-y snap-mandatory font-sans">
+    <div className="h-screen snap-y snap-proximity overflow-y-scroll font-sans">
       
       {/* Home Section */}
       <section 
         id="home"
-        className="snap-start flex flex-col items-start h-screen w-full bg-violet-800 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:30px_30px]"
+        className="relative snap-start flex flex-col items-start h-screen w-full bg-violet-800 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:30px_30px]"
       >
-        <Profile/>
+        {/* <Profile/>
         <Resume/>
-        <NavLinks/>
+        <NavLinks/> */}
       </section>
       
       <Banner/>
@@ -31,14 +31,14 @@ export default function Home() {
       <Banner/>
       
       {/* Blog Section */}
-      <section 
+      {/* <section 
         id="blog"
         className="snap-start h-screen w-full bg-yellow-300 bg-[radial-gradient(white_1.3px,transparent_0.5px)] [background-size:30px_30px]"
       >
-        {/* Add your blog content here */}
-      </section>
+        Add your blog content here
+      </section> */}
       
-      <Banner/>
+      {/* <Banner/> */}
       
       {/* About Section */}
       <section 
