@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronDown } from "lucide-react";
+// import { ChevronDown } from "lucide-react";
 
 interface NavButtonProps {
   logoPath: string;
@@ -28,6 +28,9 @@ export default function NavButton({
 
   const [isExpanded, setIsExpanded] = useState(false);
   
+  // const [showUrl, setShowUrl] = useState<boolean>(false); 
+  //show url after 3 seconds of constant hover - future feature
+
   const [openOnLeft, setOpenOnLeft] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -97,20 +100,6 @@ export default function NavButton({
             className={`absolute top-2 left-2 right-2 h-8 rounded-lg transition-all duration-300 bg-gradient-to-r from-white/20 via-white/15 to-white/10 group-hover:from-white/25 group-hover:via-white/20 group-hover:to-white/15 [translateZ:2px]`}
             />
 
-          {/* Side depth effects */}
-          {/* <div className={`absolute right-[-2px] top-0 bottom-0 w-1 rounded-r-lg transition-colors duration-300 ${
-                      isActive 
-                          ? 'bg-gradient-to-b from-violet-400/40 to-purple-700/60 [rotateY(90deg)_translateZ(1px)]' 
-                          : 'bg-gradient-to-b from-black/30 to-black/50 [rotateY(90deg)_translateZ(1px)]'
-                  }`} /> */}
-
-          {/* <div className={`absolute bottom-[-2px] left-0 right-0 h-1 rounded-b-lg transition-colors duration-300 ${
-                      isActive 
-                          ? 'bg-gradient-to-r from-violet-400/40 to-purple-700/60 [rotateX(90deg)_translateZ(1px)]' 
-                          : 'bg-gradient-to-r from-black/30 to-black/50 [rotateX(90deg)_translateZ(1px)]'
-                  }`} /> */}
-
-          {/* Logo container */}
           <div
             className={`absolute top-3 z-10 flex justify-center items-center w-16 mb-1 rounded-lg transition-all duration-300`}
             >
@@ -138,41 +127,18 @@ export default function NavButton({
             {text}
           </div>
 
-          {/* {links.length > 0 && (
-            <motion.div
-              className="absolute -bottom-1 right-1 w-4 h-4 flex items-center justify-center bg-violet-500/80 rounded-full"
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ChevronDown size={12} className="text-white" />
-            </motion.div>
-          )} */}
-
-          {/* Active indicator */}
-          {/* {isActive && (
-                      <div className="absolute bottom-[-2px] left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-transparent via-violet-400 to-transparent rounded-full opacity-80" />
-                  )} */}
-
-          {/* Static micro-particles */}
-          {/* {isActive && (
-                      <>
-                      <div className="absolute -top-1 -left-1 w-1 h-1 bg-violet-400/60 rounded-full" />
-                      <div className="absolute -bottom-1 -right-1 w-0.5 h-0.5 bg-violet-400/60 rounded-full" />
-                      <div className="absolute top-2 -right-2 w-0.5 h-0.5 bg-purple-400/60 rounded-full" />
-                      </>
-                      )} */}
-
           {/* Hover shimmer */}
           <div className="absolute inset-0 rounded-xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform skew-x-12 translate-x-2 w-[40%] h-full" />
           </div>
         </div>
       </motion.div>
+
       <AnimatePresence>
         {isExpanded && links.length > 0 && (
           <motion.div
-            className={`absolute top-5 z-50 min-w-[200px] ${
-              openOnLeft ? 'right-full mr-4' : 'left-full ml-4'
+            className={`absolute top-12 z-50 min-w-[250px] ${
+              openOnLeft ? 'right-full mr-1' : 'left-full ml-1'
             }`}
             initial={{ opacity: 1, x: openOnLeft ? 20 : -20, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -195,7 +161,7 @@ export default function NavButton({
             >
               {/* Header */}
               <div className="px-4 py-2 border-b border-violet-400/20 bg-gradient-to-r from-violet-500/20 to-purple-600/20">
-                <h3 className="text-sm font-semibold text-white">{text} Links</h3>
+                <h3 className="text-xl font-semibold text-white">{text} Links</h3>
               </div>
 
               {/* Links */}

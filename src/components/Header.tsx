@@ -11,15 +11,16 @@ export default function Header() {
     ]
 
     const profileList = [
-        { label: 'Codeforces', url: 'https://codeforces.com/profile/StarLord024' },
         // { label: 'Atcoder', url: 'https://atcoder.jp/users/abhinav_kumar_a_b' },
-        { label: 'Leetcode', url: 'https://leetcode.com/shuklaabhinav824' },
+        { label: 'Codeforces', url: 'https://codeforces.com/profile/StarLord024'},
+        { label: 'Leetcode', url: 'https://leetcode.com/shuklaabhinav824',  },
         { label: 'Github', url: 'https://github.com/StarLord824' },
         { label: 'LinkedIn', url: 'https://www.linkedin.com/in/shuklaabhinav824' },
     ]
 
     const blogList = [
-        { label: 'Blog', url: 'https://blog.abhinav.xyz' },
+        // fetches latest 10 blogs from /blog api route
+        { label: 'Blogs', url: '/blog' },
     ]
 
     return (
@@ -31,7 +32,7 @@ export default function Header() {
             <div className="flex justify-evenly w-3/8 h-full  rounded-xl">
                 <NavButtons text='Contacts' logoPath='/navbutton/Contacts.svg' links={contactList}/>
                 <NavButtons text='Profiles' logoPath='/navbutton/Codes.svg' links={profileList}/>
-                <NavButtons text='Blogs' logoPath='/navbutton/News.svg' links={blogList}/> {/* will navigate to blogpage */}
+                <NavButtons text='Blogs' logoPath='/navbutton/Blogs.svg' links={blogList}/> {/* will navigate to blogpage */}
             </div>
         </div>
     )

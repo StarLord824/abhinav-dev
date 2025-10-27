@@ -1,5 +1,5 @@
 import Banner from "@/components/Banner/Banner";
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 import NavLinks from "@/components/NavLinks/NavLinks";
 import Profile from "@/components/Profile/Profile";
 import Resume from "@/ui/Resume";
@@ -13,9 +13,9 @@ export default function Home() {
         id="home"
         className="relative snap-start flex flex-col items-start h-screen w-full bg-violet-800 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:30px_30px]"
       >
-        {/* <Profile/>
+        <Profile/>
         <Resume/>
-        <NavLinks/> */}
+        <NavLinks/>
       </section>
       
       <Banner/>
