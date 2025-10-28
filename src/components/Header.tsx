@@ -19,8 +19,8 @@ export default function Header() {
     ]
 
     const blogList = [
+        { label: 'Blogs', url: '/blogs' },
         // fetches latest 10 blogs from /blog api route
-        { label: 'Blogs', url: '/blog' },
     ]
 
     return (
