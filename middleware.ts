@@ -1,16 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server';
+import { getSessionCookie} from 'better-auth/cookies'
 // import { getToken } from 'next-auth/jwt';
 
 export async function middleware(req : NextRequest) {
-//   const token = await getToken({ req });
-//   if (req.nextUrl.pathname.startsWith('/blog/admin')) {
-//     if (!token || token.role !== 'ADMIN') {
-//       return NextResponse.redirect(new URL('/login', req.url));
-//     }
-//   }
-//   return NextResponse.next();
+    const sessionCookie = getSessionCookie(req)
 }
-
-// export const config = {
-//   matcher: 'api/blogs/admin/:path*',
-// };

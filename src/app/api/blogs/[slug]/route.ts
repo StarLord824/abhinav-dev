@@ -1,4 +1,4 @@
-import prisma from "@/app/lib/db";
+import prisma from "@/lib/db";
 import { blogDataSchema } from "@/types/blogData";
 import z from "zod";
 

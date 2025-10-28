@@ -14,16 +14,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User{
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  role      String   @default("USER")
-  posts     Blog[]
+model User {
+  id            Int       @id @default(autoincrement())
+  name          String
+  email         String    @unique
+  password      String
+  role          String    @default("USER")
+  posts         Blog[]
   // comments  Comment[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  emailVerified Boolean   @default(false)
+  image         String?
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("user")
 }
 
 model Blog {
@@ -33,18 +39,17 @@ model Blog {
   authorId       Int
   status         Status   @default(DRAFT)
   published      Boolean  @default(false)
-  tags           String[]              // array of tags
-  thumbnail      String?               // optional
-  content        Json                   // array of content blocks (Zod schema)
-  tableOfContent Json                   // array of TOC items
-  comments       Json?                  // optional array of comments
-  likes          Int?                   // optional likes count
-  relatedBlogs   Json?                  // optional array of related blog IDs or slugs
+  tags           String[] // array of tags
+  thumbnail      String? // optional
+  content        Json // array of content blocks (Zod schema)
+  tableOfContent Json // array of TOC items
+  comments       Json? // optional array of comments
+  likes          Int? // optional likes count
+  relatedBlogs   Json? // optional array of related blog IDs or slugs
   author         User     @relation(fields: [authorId], references: [id])
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
-
 
 enum Role {
   USER
@@ -55,4 +60,49 @@ enum Status {
   DRAFT
   PUBLISHED
   ARCHIVED
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("verification")
 }

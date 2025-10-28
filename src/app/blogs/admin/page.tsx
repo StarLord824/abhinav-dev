@@ -1,4 +1,14 @@
-export default function AdminBlogPage() {
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+export default async function AdminBlogPage() {
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+    if(!session) {
+        redirect("/sign-in") // Redirect to absolute url/sign-in route page
+    }
     return (
         <>
             <div className="snap-y snap-mandatory font-sans">
