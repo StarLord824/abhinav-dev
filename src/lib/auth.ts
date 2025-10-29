@@ -1,10 +1,11 @@
 //better auth for authentication in editting blogs as admin
 import { betterAuth } from "better-auth";
-import {prismaAdapter} from "better-auth/adapters/prisma";
-import {PrismaClient} from "@prisma/client";
+import { prismaAdapter } from "better-auth/adapters/prisma";
+import { PrismaClient } from "@prisma/client";
 import { nextCookies } from "better-auth/next-js";
 
-const prisma = new PrismaClient();  
+const prisma = new PrismaClient();
+
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql"

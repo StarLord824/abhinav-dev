@@ -1,6 +1,6 @@
 import Blogs from "@/components/Blogs"
 
-export default function BlogPage() {
+export default async function BlogPage() {
     return (
         <div className="snap-y snap-mandatory font-sans">
             <Blogs/>

@@ -73,7 +73,7 @@ export default function SignUp() {
         <p className="text-sm text-zinc-400 text-center mt-6">
           Already have an account?{" "}
           <a
-            href="/signin"
+            href="/sign-in"
             className="text-indigo-400 hover:text-indigo-300 underline"
           >
             Sign in

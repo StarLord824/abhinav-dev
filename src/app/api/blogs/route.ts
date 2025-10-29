@@ -1,6 +1,9 @@
+
+import { loadBlogs } from "@/app/actions/loadBlogs";
+
 export async function GET(request: Request) {
-    // const blogs = await request.db.blog.findMany();
-    // return new Response(blogs);
+    const blogs = await loadBlogs();  //use of server action to load blogs
+    return Response.json(blogs);
 }
 
 export async function POST(request: Request) {

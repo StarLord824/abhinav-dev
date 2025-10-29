@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
-import { signInAction } from "@/app/actions/authActions"; // adjust import path
+import { signInAction } from "@/app/actions/auth"; // adjust import path
 import { Loader2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
@@ -62,7 +62,7 @@ export default function SignIn() {
         <p className="text-sm text-zinc-400 text-center mt-6">
           Don’t have an account?{" "}
           <a
-            href="/signup"
+            href="/sign-up"
             className="text-indigo-400 hover:text-indigo-300 underline"
           >
             Sign up

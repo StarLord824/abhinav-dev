@@ -23,12 +23,15 @@ export async function signUpAction(formData : FormData) {
     const password = formData.get("password") as string;
     const name = formData.get("name") as string;
     // const role = formData.get("role") as string;
+    if( !email || !password || !name ) {
+        throw new Error("Missing required fields");
+    }
 
     await auth.api.signUpEmail({
         body : {
-            email,
-            password,
-            name,
+            email: 'shukla.abhinav@gmail.com',
+            password : "Abhinav@123",
+            name : "Abhinav Shukla",
             // role,
         }
     })
