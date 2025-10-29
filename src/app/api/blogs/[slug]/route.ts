@@ -1,6 +1,8 @@
-import prisma from "@/lib/db";
+// import prisma from "@/lib/db";
 import { blogDataSchema } from "@/types/blogData";
-import z from "zod";
+// import z from "zod";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function GET(request: Request, {params}: {params: {slug: string}}) {
     //no auth needed;
@@ -18,8 +20,8 @@ export async function GET(request: Request, {params}: {params: {slug: string}}) 
                 headers: { "Content-Type": "application/json" }
             });
         }
-    } catch (error : any) {
-        return new Response(error, {status: 500});
+    } catch (error : unknown) {
+        return new Response("Internal Server Error", {status: 500});
     }
 }
 
@@ -42,12 +44,14 @@ export async function PUT(request: Request, {params}: {params: {slug: string}}) 
             status: 200,
             headers: { "Content-Type": "application/json" }
         });
-    } catch (error : any) {
-        return new Response(error, {status: 500});
+    } catch (error : unknown) {
+        return new Response("Internal Server Error", {status: 500});
     }
 }
 
 export async function DELETE(request: Request, {params}: {params: {slug: string}}) {
+    // const body = await request.json();
+    // console.log(body)
     try {
         const blog = await prisma.blog.delete({
             where: {
@@ -58,7 +62,7 @@ export async function DELETE(request: Request, {params}: {params: {slug: string}
             status: 200,
             headers: { "Content-Type": "application/json" }
         });
-    } catch (error : any) {
-        return new Response(error, {status: 500});
+    } catch (error : unknown) {
+        return new Response("Internal Server Error", {status: 500});
     }
 }

@@ -23,7 +23,7 @@ export default function SignUp() {
           action={async (formData) => {
             try {
               await signUpAction(formData);
-            } catch (err: any) {
+            } catch (err : unknown) {
               console.error(err);
               setError("Failed to sign up. Please try again.");
             }

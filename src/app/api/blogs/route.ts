@@ -1,12 +1,12 @@
 
 import { loadBlogs } from "@/app/actions/loadBlogs";
 
-export async function GET(request: Request) {
+export async function GET() {
     const blogs = await loadBlogs();  //use of server action to load blogs
     return Response.json(blogs);
 }
 
-export async function POST(request: Request) {
+// export async function POST(request: Request) {
     // const session = await getSession();
     // if(session?.user.role !== "ADMIN"){
     //     return new Response("Unauthorized", { status: 403 });
@@ -19,9 +19,9 @@ export async function POST(request: Request) {
     //     },
     // });
     // return new Response(blog);
-}
+// }
 
-export async function PUT(request: Request) {
+// export async function PUT(request: Request) {
     // const session = await getSession();
     // if(session?.user.role !== "ADMIN"){
     //     return new Response("Unauthorized", { status: 403 });
@@ -34,9 +34,9 @@ export async function PUT(request: Request) {
     //     },
     // });
     // return new Response(blog);
-}
+// }
 
-export async function DELETE(request: Request) {
+// export async function DELETE(request: Request) {
     // const session = await getSession();
     // if(session?.user.role !== "ADMIN"){
     //     return new Response("Unauthorized", { status: 403 });
@@ -46,4 +46,4 @@ export async function DELETE(request: Request) {
     //     where: { id: body.id },
     // });
     // return new Response(blog);
-}
+// }

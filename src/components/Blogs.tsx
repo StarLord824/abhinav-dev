@@ -4,13 +4,14 @@ import { IconArrowWaveRightUp } from "@tabler/icons-react";
 import { blogPreviewSchema } from "@/types/blogData";
 import { loadBlogsPreview } from "@/app/actions/loadBlogsPreview";
 import z from "zod";
-export default async function Blogs() {
-  
+import Image from "next/image";
+
+export default async function Blogs() {  
   let blogs: z.infer<typeof blogPreviewSchema>[] = [];
 
   try {
     const data = await loadBlogsPreview();
-    blogs = data.map((blog : any) => blogPreviewSchema.parse(blog));
+    blogs = data.map((blog) => blogPreviewSchema.parse(blog));
   } catch (error) {
     console.error("Failed to load or validate blogs:", error);
     return (
@@ -62,7 +63,7 @@ function BlogThumbnail({ thumbnail }: { thumbnail?: string }) {
   return (
     <div className="flex w-full h-full rounded-xl overflow-hidden bg-neutral-900">
       {thumbnail ? (
-        <img
+        <Image
           src={thumbnail}
           alt="thumbnail"
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -74,6 +75,6 @@ function BlogThumbnail({ thumbnail }: { thumbnail?: string }) {
   );
 }
 
-function loadBlogPreview() {
-  throw new Error("Function not implemented.");
-}
+// function loadBlogPreview() {
+//   throw new Error("Function not implemented.");
+// }

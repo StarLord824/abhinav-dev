@@ -23,7 +23,7 @@ export default function SignIn() {
           action={async (formData) => {
             try {
               await signInAction(formData);
-            } catch (err: any) {
+            } catch ( err : unknown) {
               console.error(err);
               setError("Invalid credentials. Please try again.");
             }
