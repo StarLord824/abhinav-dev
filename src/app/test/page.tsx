@@ -1,4 +1,4 @@
-import { loadBlogs } from "../actions/loadBlogs";
+// import { loadBlogs } from "../actions/loadBlogs";
 
 export default async function Page() {
 

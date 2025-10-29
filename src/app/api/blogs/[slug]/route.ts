@@ -21,6 +21,7 @@ export async function GET(request: Request, {params}: {params: {slug: string}}) 
             });
         }
     } catch (error : unknown) {
+        console.error(error);
         return new Response("Internal Server Error", {status: 500});
     }
 }
@@ -45,6 +46,7 @@ export async function PUT(request: Request, {params}: {params: {slug: string}}) 
             headers: { "Content-Type": "application/json" }
         });
     } catch (error : unknown) {
+        console.error(error);
         return new Response("Internal Server Error", {status: 500});
     }
 }
@@ -63,6 +65,7 @@ export async function DELETE(request: Request, {params}: {params: {slug: string}
             headers: { "Content-Type": "application/json" }
         });
     } catch (error : unknown) {
+        console.error(error);
         return new Response("Internal Server Error", {status: 500});
     }
 }

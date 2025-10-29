@@ -17,7 +17,7 @@ export function BlogPageHeader(){
             {/* top bar */}
             <div className="flex flex-col justify-center items-center">
                 <div>
-                    <h1 className="text-4xl font-bold text-white">Abhinav's Blogs</h1>
+                    <h1 className="text-4xl font-bold text-white">Abhinav ke Blogs</h1>
                 </div>
                 <div>
                     {/* search bar */}
