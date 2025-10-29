@@ -3,6 +3,6 @@
 import axios from "axios";
 
 export async function loadBlogs() {
-    const blogs = await axios.get('/api/blogs');
+    const blogs : any = await axios.get("/api/blogs");
     return blogs.data;
 }

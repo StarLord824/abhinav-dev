@@ -10,7 +10,7 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
-import { loadBlogs } from "@/app/blogs/action";
+import { loadBlogs } from "@/app/actions/loadBlogs";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -39,9 +39,9 @@ const Skeleton = () => (
   </div>
 );
 
-// const items = await loadBlogs();
+const items = await loadBlogs();
 
-const items = [
+const itemsForDisplay = [
   //technically, it should import data from a CMS or database
   {
     title: "The Dawn of Innovation",

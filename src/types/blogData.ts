@@ -18,11 +18,11 @@ export const tableOfContentItemSchema = z.object({
 export const blogDataSchema = z.object({
     title: z.string(),
     image: z.string(),
-    date: z.string(),
+    date: z.union([z.string(), z.date()]),
     author: z.string(),
     tags: z.array(z.string()),
     category: z.string(),
-    tableOfContent: tableOfContentItemSchema.array(),
+    tableOfContent: z.array(tableOfContentItemSchema),
     content: z.array(blogContentSchema),
     comments: z.array(z.string()).optional(),
     likes: z.number().min(0).optional(),

@@ -7,11 +7,7 @@ export async function getSession(request: Request) {
         headers: await headers()
     });
     if(!session) {
-        return <div>Not authenticated</div>
+        return { user: { status : 'guest'}}
     }
-    return (
-        <div>
-            <h1>Welcome {session.user.name}</h1>
-        </div>
-    )
+    return { user: { status : 'authenticated', name: session.user.name }}
 }
