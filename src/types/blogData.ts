@@ -1,5 +1,4 @@
 import {z} from "zod";
-// import { sl } from "zod/locales";
 
 export const blogContentSchema = z.object({
     type: z.enum(["paragraph", "heading", "image", "quote", "code"]), // block type
@@ -53,3 +52,8 @@ export const blogPreviewSchema = z.object({
     createdAt: z.union([z.string(), z.date()]),
     updatedAt: z.union([z.string(), z.date()]),
 })
+
+export type BlogContent = z.infer<typeof blogContentSchema>;
+export type TableOfContentItem = z.infer<typeof tableOfContentItemSchema>;
+export type BlogData = z.infer<typeof blogDataSchema>;
+export type BlogPreview = z.infer<typeof blogPreviewSchema>;

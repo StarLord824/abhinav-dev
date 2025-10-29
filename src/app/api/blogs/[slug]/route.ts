@@ -1,10 +1,10 @@
 // import prisma from "@/lib/db";
 import { blogDataSchema } from "@/types/blogData";
 // import z from "zod";
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export async function GET(request: Request, {params}: {params: {slug: string}}) {
+export async function GET({params}: {params: {slug: string}}) {
     //no auth needed;
     try{
         const blog = await prisma.blog.findUnique({
@@ -21,7 +21,7 @@ export async function GET(request: Request, {params}: {params: {slug: string}}) 
             });
         }
     } catch (error : unknown) {
-        console.error(error);
+        console.error("GET /blog error:", error);
         return new Response("Internal Server Error", {status: 500});
     }
 }
@@ -41,17 +41,22 @@ export async function PUT(request: Request, {params}: {params: {slug: string}}) 
                 comments: blogData.comments ? JSON.stringify(blogData.comments) : undefined,
             },
         });
-        return new Response(JSON.stringify({ blog }), {
+        return new Response(JSON.stringify({ blog, message : "Blog updated successfully" }), {
             status: 200,
             headers: { "Content-Type": "application/json" }
         });
     } catch (error : unknown) {
-        console.error(error);
+        console.error("PUT /blog error:", error);
+
+        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+            return new Response("Blog not found", { status: 404 });
+        }
+
         return new Response("Internal Server Error", {status: 500});
     }
 }
 
-export async function DELETE(request: Request, {params}: {params: {slug: string}}) {
+export async function DELETE({params}: {params: {slug: string}}) {
     // const body = await request.json();
     // console.log(body)
     try {
@@ -60,12 +65,17 @@ export async function DELETE(request: Request, {params}: {params: {slug: string}
                 slug: params.slug,
             },
         });
-        return new Response(JSON.stringify({ blog }), {
+        return new Response(JSON.stringify({ blog, message: "Blog deleted successfully" }), {
             status: 200,
             headers: { "Content-Type": "application/json" }
         });
     } catch (error : unknown) {
-        console.error(error);
+        console.error("DELETE /blog error:", error);
+
+        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+            return new Response("Blog not found", { status: 404 });
+        }
+
         return new Response("Internal Server Error", {status: 500});
     }
 }

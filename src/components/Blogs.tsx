@@ -2,7 +2,7 @@ import React from "react";
 import { BentoGrid, BentoGridItem } from "@/ui/bento-grid";
 import { IconArrowWaveRightUp } from "@tabler/icons-react";
 import { blogPreviewSchema } from "@/types/blogData";
-import { loadBlogsPreview } from "@/app/actions/loadBlogsPreview";
+import { loadBlogsPreview } from "@/app/actions/blogs/loadBlogsPreview";
 import z from "zod";
 import Image from "next/image";
 
