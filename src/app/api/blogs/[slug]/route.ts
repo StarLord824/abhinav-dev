@@ -4,12 +4,12 @@ import { blogDataSchema } from "@/types/blogData";
 import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export async function GET({params}: {params: {slug: string}}) {
+export async function GET({params}: {params: {id: number}}) {
     //no auth needed;
     try{
         const blog = await prisma.blog.findUnique({
             where: {
-                slug: params.slug,
+                id: params.id,
             },
         });
         if (!blog) {
@@ -27,6 +27,7 @@ export async function GET({params}: {params: {slug: string}}) {
 }
 
 export async function PUT(request: Request, {params}: {params: {slug: string}}) {
+    //admin check
     const body = await request.json();
     const blogData = blogDataSchema.parse(body);
     try {

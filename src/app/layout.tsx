@@ -13,7 +13,7 @@ const clashFontsBold = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Starlord.dev",
+  title: "Shukla_Abhinav.dev",
   description: "My Portfolio Website",
 };
 
