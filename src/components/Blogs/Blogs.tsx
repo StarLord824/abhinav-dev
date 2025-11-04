@@ -4,8 +4,9 @@ import { IconArrowWaveRightUp, IconSwords, IconSparkles } from "@tabler/icons-re
 import { blogPreviewSchema } from "@/types/blogData";
 import { loadBlogsPreview } from "@/app/actions/blogs/loadBlogsPreview";
 import z from "zod";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function Blogs() {  
   let blogs: z.infer<typeof blogPreviewSchema>[] = [];
@@ -130,10 +131,12 @@ function BlogThumbnail({ thumbnail }: { thumbnail?: string }) {
   return (
     <div className="relative flex w-full h-full min-h-[180px] rounded-xl overflow-hidden bg-neutral-900">
       {thumbnail ? (
-        <img
+        <Image
           src={thumbnail}
           alt="Blog thumbnail"
-          // fill
+          // width={}
+          // height={}
+          fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           loading="lazy" // Lazy load for performance

@@ -4,12 +4,14 @@ import { blogDataSchema } from "@/types/blogData";
 import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export async function GET({params}: {params: {id: number}}) {
+export async function GET(_req: Request, {params}: {params: {slug: string}}) {
     //no auth needed;
+    // const body = await request.json();
+    // console.log(body)
     try{
         const blog = await prisma.blog.findUnique({
             where: {
-                id: params.id,
+                id: Number(params.slug),
             },
         });
         if (!blog) {
