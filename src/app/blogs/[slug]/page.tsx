@@ -1,3 +1,83 @@
+import { notFound } from "next/navigation";
+import { blogDataSchema } from "@/types/blogData";
+import { loadBlogBySlug } from "@/app/actions/blogs/loadBlogBySlug";
+import BlogDetailClient from "@/components/Blogs/BlogDetailClient";
+import { IconSwords } from "@tabler/icons-react";
+
+interface BlogDetailPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  let blog;
+
+  try {
+    const data = await loadBlogBySlug(params.slug);
+    if (!data) {
+      notFound();
+    }
+    blog = blogDataSchema.parse(data);
+  } catch (error) {
+    console.error("Failed to load blog:", error);
+    return (
+      <div 
+        className="min-h-screen flex flex-col items-center justify-center px-4 bg-cover bg-center"
+        style={{ backgroundImage: "url('/Blog/Blog_Header.png')" }}
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-red-500/10 blur-xl rounded-full" />
+          <div className="relative bg-gradient-to-br from-neutral-900 via-neutral-800 to-red-950 border-2 border-red-900/50 rounded-2xl p-8 shadow-2xl backdrop-blur-sm">
+            <IconSwords className="h-12 w-12 text-red-500 mx-auto mb-4 animate-pulse" />
+            <p className="text-lg text-neutral-300 text-center font-bold">
+              Battle Entry Not Found ⚔️
+            </p>
+            <p className="text-sm text-neutral-500 text-center mt-2">
+              This chronicle has been lost to the arena
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <BlogDetailClient blog={blog} />;
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }: BlogDetailPageProps) {
+  try {
+    const blog = await loadBlogBySlug(params.slug);
+    if (!blog) return { title: "Blog Not Found" };
+
+    const description = blog.content
+      ?.find((block: any) => block.type === "paragraph" && block.text)
+      ?.text?.slice(0, 160) || blog.title;
+
+    return {
+      title: blog.title,
+      description,
+      openGraph: {
+        title: blog.title,
+        description,
+        images: blog.thumbnail ? [{ url: blog.thumbnail }] : [],
+        type: "article",
+        publishedTime: new Date(blog.createdAt).toISOString(),
+        tags: blog.tags,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog.title,
+        description,
+        images: blog.thumbnail ? [blog.thumbnail] : [],
+      },
+    };
+  } catch {
+    return { title: "Blog" };
+  }
+}
+
 // import axios from "axios";
 // import { blogDataSchema } from "@/types/blogData";
 // import z from "zod";
