@@ -81,7 +81,7 @@ export default async function Blogs() {
 
           return (
             <Link 
-              href={blog.url || `/blog/${blog.slug || i}`} 
+              href={`/blog/${blog.slug}`} 
               key={i} 
               className="block group"
             >

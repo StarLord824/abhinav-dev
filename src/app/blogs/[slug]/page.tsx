@@ -4,6 +4,13 @@
 // import BlogDetailClient from "@/components/Blogs/BlogDetailClient";
 // import { IconSwords } from "@tabler/icons-react";
 
+export default function BlogDetailPage() {
+  return (
+    <div className="snap-y snap-mandatory">
+      <h1>Blog Detail Page</h1>
+    </div>
+  );
+}
 // interface BlogDetailPageProps {
 //   params: {
 //     slug: string;
