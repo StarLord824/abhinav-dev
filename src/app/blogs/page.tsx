@@ -8,7 +8,7 @@ export default async function BlogPage() {
 
   try {
     const data = await loadBlogsPreview();
-    blogs = data.map((blog) => blogPreviewSchema.parse(blog));
+    blogs = data.map((blog: unknown) => blogPreviewSchema.parse(blog));
   } catch (error) {
     console.error("Failed to load or validate blogs:", error);
     return (
