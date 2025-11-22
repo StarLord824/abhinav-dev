@@ -11,7 +11,6 @@ export default function Header() {
   ];
 
   const profileList = [
-    // { label: 'Atcoder', url: 'https://atcoder.jp/users/abhinav_kumar_a_b' },
     { label: 'Codeforces', url: 'https://codeforces.com/profile/StarLord024' },
     { label: 'Leetcode', url: 'https://leetcode.com/shuklaabhinav824' },
     { label: 'Github', url: 'https://github.com/StarLord824' },
@@ -20,16 +19,18 @@ export default function Header() {
 
   const blogList = [
     { label: 'Blogs', url: '/blogs' },
-    // fetches latest 10 blogs from /blog api route
   ];
 
   return (
-    <div className="fixed flex justify-between px-8 items-center z-100 top-4 h-15 w-full font-sans">
-      <div className="w-1/2 h-full bg-black/20 rounded-xl flex items-center justify-around">
+    <div className="fixed flex flex-col md:flex-row justify-between px-4 md:px-6 lg:px-8 items-center z-100 top-2 md:top-4 gap-2 md:gap-0 w-full font-sans">
+      {/* XP Buttons - Stack on mobile, side by side on tablet+ */}
+      <div className="w-full md:w-1/2 h-full bg-black/20 rounded-xl flex flex-col sm:flex-row items-center justify-around gap-2 sm:gap-0 py-2 sm:py-0">
         <XpButton logo={'/xpbutton/Polygon.svg'} amount={'2 Years'} text={'XP'} />
         <XpButton logo={'/xpbutton/gem.svg'} amount='20+ Projects' text={'PoW'} />
       </div>
-      <div className="flex justify-evenly w-3/8 h-full rounded-xl">
+
+      {/* Nav Buttons - Hide on mobile, show on tablet+ */}
+      <div className="hidden md:flex justify-evenly w-full md:w-3/8 h-full rounded-xl gap-2">
         <NavButtons text='Contacts' logoPath='/navbutton/Contacts.svg' links={contactList} />
         <NavButtons text='Profiles' logoPath='/navbutton/Codes.svg' links={profileList} />
         <NavButtons text='Blogs' logoPath='/navbutton/Blogs.svg' links={blogList} />

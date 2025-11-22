@@ -79,7 +79,7 @@ export default function Navigators(props: Props) {
     >
       <motion.button 
         onClick={() => handleNavClick(props.sectionId)}
-        className="relative w-52 h-20 rounded-2xl"
+        className="relative w-40 h-16 sm:w-48 sm:h-18 md:w-52 md:h-20 rounded-2xl"
         variants={buttonVariants}
       >
         {/* Main button container */}
@@ -92,7 +92,7 @@ export default function Navigators(props: Props) {
         >
           {/* Text content */}
           <motion.div 
-            className="font-bold text-3xl text-black heavy-stroke-text select-none"
+            className="font-bold text-2xl sm:text-2xl md:text-3xl text-black heavy-stroke-text select-none"
             style={{
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3), -1px -1px 0px rgba(255, 255, 255, 0.8)"
             }}

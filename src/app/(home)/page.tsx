@@ -9,7 +9,7 @@ export default function Home() {
       {/* Home Section */}
       <section 
         id="home"
-        className="relative snap-start flex flex-col items-start h-screen w-full bg-violet-800 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:30px_30px] [contain:paint_layout]"
+        className="relative snap-start flex flex-col items-start min-h-screen h-auto sm:h-screen w-full bg-violet-800 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:30px_30px] [contain:paint_layout] px-0 sm:px-0"
       >
         <Profile />
         <Resume />
@@ -21,7 +21,7 @@ export default function Home() {
       {/* Projects Section */}
       <section 
         id="projects"
-        className="snap-start h-[200vh] w-full bg-green-400 bg-[radial-gradient(white_1.2px,transparent_0.5px)] [background-size:30px_30px] [contain:paint_layout]"
+        className="snap-start min-h-screen h-auto sm:h-[200vh] w-full bg-green-400 bg-[radial-gradient(white_1.2px,transparent_0.5px)] [background-size:30px_30px] [contain:paint_layout] p-4 sm:p-6 md:p-8"
       >
         {/* Add your projects content here */}
       </section>
@@ -31,7 +31,7 @@ export default function Home() {
       {/* About Section */}
       <section 
         id="about"
-        className="snap-start h-screen w-full bg-red-500 bg-[radial-gradient(white_1.3px,transparent_0.5px)] [background-size:30px_30px] [contain:paint_layout]"
+        className="snap-start min-h-screen h-auto sm:h-screen w-full bg-red-500 bg-[radial-gradient(white_1.3px,transparent_0.5px)] [background-size:30px_30px] [contain:paint_layout] p-4 sm:p-6 md:p-8"
       >
         {/* Add your about content here */}
       </section>

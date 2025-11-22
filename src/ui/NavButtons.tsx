@@ -70,7 +70,7 @@ export default function NavButton({
   );
 
   const containerClasses = useMemo(() => 
-    `relative flex flex-col justify-center items-center h-24 w-24 rounded-xl border-2 transition-all duration-200 overflow-hidden ${
+    `relative flex flex-col justify-center items-center h-20 w-20 md:h-24 md:w-24 rounded-xl border-2 transition-all duration-200 overflow-hidden ${
       isActive
         ? "bg-gradient-to-br from-black/30 via-violet-500/20 to-black/35 border-violet-400/60 shadow-lg shadow-violet-500/30"
         : "bg-gradient-to-br from-black/20 via-black/25 to-black/30 border-white/10 group-hover:border-violet-400/40 group-hover:shadow-md group-hover:shadow-violet-500/20"
@@ -88,7 +88,7 @@ export default function NavButton({
   );
 
   const textClasses = useMemo(() => 
-    `absolute bottom-2 flex justify-center items-center text-center text-xs z-10 font-medium transition-all duration-200 ${
+    `absolute bottom-2 flex justify-center items-center text-center text-[10px] md:text-xs z-10 font-medium transition-all duration-200 ${
       isActive
         ? "text-white font-semibold drop-shadow-[0_2px_4px_rgba(164,112,227,0.6)]"
         : "text-white/80 group-hover:text-white/95 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
@@ -140,7 +140,7 @@ export default function NavButton({
       <AnimatePresence>
         {isExpanded && links.length > 0 && (
           <motion.div
-            className={`absolute top-12 z-50 min-w-[250px] ${
+            className={`absolute top-12 z-50 min-w-[200px] md:min-w-[250px] lg:min-w-[280px] ${
               openOnLeft ? 'right-full mr-2' : 'left-full ml-2'
             }`}
             initial={{ opacity: 0, y: -10, scale: 0.95 }}

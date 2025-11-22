@@ -11,7 +11,7 @@ export default function Banner() {
   const imagePath = '/Adobe.png';
 
   return (
-    <div className="overflow-hidden flex items-center italic font-semibold text-lg bg-white text-black h-10 w-full">
+    <div className="overflow-hidden flex items-center italic font-semibold text-sm sm:text-base md:text-lg bg-white text-black h-8 sm:h-9 md:h-10 w-full">
       <motion.div
         className="flex items-center whitespace-nowrap"
         animate={{ x: ["0%", "-50%"] }}
@@ -27,13 +27,14 @@ export default function Banner() {
         }}
       >
         {scrollItems.map((item, idx) => (
-          <div key={idx} className="flex gap-3 justify-center items-center px-20">
+          <div key={idx} className="flex gap-2 sm:gap-3 justify-center items-center px-12 sm:px-16 md:px-20">
             {item}
             <Image
               src={imagePath}
               alt="Aurora UI/UX Banner"
               height={70}
               width={70}
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
               priority
             />
           </div>
