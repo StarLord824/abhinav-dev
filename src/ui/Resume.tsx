@@ -1,35 +1,35 @@
-'use client'
-import React from 'react';
+'use client';
+import React, { useMemo } from 'react';
 import { motion, Variants } from 'motion/react';
 import { Download } from 'lucide-react';
 
 export default function Floating2DResumeObject() {
 
   // Animation variants
-  const floatAnimation : Variants = {
+  const floatAnimation : Variants = useMemo(() => ({
     animate: {
       y: [0, -8, -12, -8, 0],
       rotateY: [0, 5, 0, -5, 0],
       transition: {
-        duration: 4,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut"
       }
     }
-  };
+  }), []);
 
-  const rotate3dAnimation: Variants = {
+  const rotate3dAnimation: Variants = useMemo(() => ({
     animate: {
       rotateX: [15, 20, 15, 10, 15],
       rotateY: [-15, -10, -15, -20, -15],
       rotateZ: [0, 2, 0, -2, 0],
       transition: {
-        duration: 6,
+        duration: 5,
         repeat: Infinity,
         ease: "linear"
       }
     }
-  };
+  }), []);
 
   // const particleFloat : Variants= {
   //   animate: {
@@ -93,12 +93,12 @@ export default function Floating2DResumeObject() {
             className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-violet-500/30 to-pink-500/20 rounded-3xl blur-xl"
             initial={{ scale: 1.5 }}
             whileHover={{ scale: 1.75 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           />
           
           {/* Main 2.5D Object */}
           <motion.div 
-            className="relative bg-gradient-to-br from-slate-100 via-white to-slate-200 rounded-2xl shadow-2xl border border-white/50 group-hover:shadow-3xl transition-all duration-500 h-[200px] w-[160px]"
+            className="relative bg-gradient-to-br from-slate-100 via-white to-slate-200 rounded-2xl shadow-2xl border border-white/50 group-hover:shadow-3xl transition-all duration-300 h-[200px] w-[160px]"
             variants={rotate3dAnimation}
             animate="animate"
             initial={{

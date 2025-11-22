@@ -1,19 +1,26 @@
-'use client'
+'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 
 export default function Profile() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [activeSkill, setActiveSkill] = useState<number | null>(null);
 
-  const skills = [
+  // Memoize skills array to prevent recreation
+  const skills = useMemo(() => [
     { name: 'C++', icon: '/langs/cpp.svg', size: 50 },
     { name: 'TypeScript', icon: '/langs/Typescript.svg', size: 38 },
     { name: 'JavaScript', icon: '/langs/javascript.svg', size: 38 },
     { name: 'Go', icon: '/langs/Go.svg', size: 70 },
     { name: 'Java', icon: '/langs/java.svg', size: 50 },
     { name: 'Python', icon: '/langs/python.svg', size: 45 }
-  ];
+  ], []);
+
+  // Memoize event handlers
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+  const handleSkillEnter = useCallback((index: number) => setActiveSkill(index), []);
+  const handleSkillLeave = useCallback(() => setActiveSkill(null), []);
 
   return (
     <div 
@@ -27,11 +34,11 @@ export default function Profile() {
         {/* Profile Banner Image - 3D */}
         <div 
           className="relative group pointer-events-auto"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <div 
-            className={`relative transform transition-all duration-300 [transform-style:preserve-3d] ${
+            className={`relative transform transition-all duration-200 [transform-style:preserve-3d] ${
               isHovered 
                 ? 'scale-105 [transform:rotateY(2deg)_rotateX(1deg)]' 
                 : '[transform:rotateY(0deg)_rotateX(0deg)]'
@@ -45,6 +52,7 @@ export default function Profile() {
                 className="w-full h-auto object-cover"
                 height={1000}
                 width={1000}
+                priority
               />
               
               {/* Depth Side Faces */}
@@ -59,7 +67,7 @@ export default function Profile() {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-white/30 via-violet-400/20 to-white/20" />
               
               {/* Hover Glow Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-violet-600/20 transition-opacity duration-300 ${
+              <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-violet-600/20 transition-opacity duration-200 ${
                 isHovered ? 'opacity-100' : 'opacity-0'
               }`} />
             </div>
@@ -73,7 +81,7 @@ export default function Profile() {
 
         {/* Profile Info Section */}
         <div 
-          className={`flex justify-between items-start px-10 relative z-10 transform transition-all duration-300 rounded-r-xl border border-white/10 backdrop-blur-[20px] bg-[linear-gradient(135deg,rgba(0,0,0,0.4)_0%,rgba(164,112,227,0.2)_50%,rgba(0,0,0,0.4)_100%)] shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1),0_0_20px_rgba(164,112,227,0.3)] [transform-style:preserve-3d] pointer-events-auto ${
+          className={`flex justify-between items-start px-10 relative z-10 transform transition-all duration-200 rounded-r-xl border border-white/10 backdrop-blur-[20px] bg-[linear-gradient(135deg,rgba(0,0,0,0.4)_0%,rgba(164,112,227,0.2)_50%,rgba(0,0,0,0.4)_100%)] shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1),0_0_20px_rgba(164,112,227,0.3)] [transform-style:preserve-3d] pointer-events-auto ${
             isHovered 
               ? 'scale-105 [transform:translateZ(4px)_scale(1.02)]' 
               : '[transform:translateZ(0px)]'
@@ -87,7 +95,7 @@ export default function Profile() {
           {/* Profile Text */}
           <div className="flex flex-col py-4 z-20 ml-10">
             <h1 
-              className={`font-bold text-2xl transition-all duration-300 [text-shadow:0_0_20px_rgba(164,112,227,0.5)] ${
+              className={`font-bold text-2xl transition-all duration-200 [text-shadow:0_0_20px_rgba(164,112,227,0.5)] ${
                 isHovered 
                   ? 'text-white drop-shadow-lg scale-105' 
                   : 'text-white/90'
@@ -96,7 +104,7 @@ export default function Profile() {
               Abhinav Shukla
             </h1>
             <h4 
-              className={`font-semibold transition-all duration-300 [text-shadow:0_0_15px_rgba(6,182,212,0.5)] ${
+              className={`font-semibold transition-all duration-200 [text-shadow:0_0_15px_rgba(6,182,212,0.5)] ${
                 isHovered 
                   ? 'text-cyan-300 scale-105' 
                   : 'text-blue-300'
@@ -111,15 +119,15 @@ export default function Profile() {
             {skills.map((skill, index) => (
               <div
                 key={skill.name}
-                className={`relative group cursor-pointer transform transition-all duration-300 hover:scale-110 [transform-style:preserve-3d] ${
+                className={`relative group cursor-pointer transform transition-all duration-200 hover:scale-110 [transform-style:preserve-3d] ${
                   activeSkill === index ? 'scale-115' : ''
                 }`}
-                onMouseEnter={() => setActiveSkill(index)}
-                onMouseLeave={() => setActiveSkill(null)}
+                onMouseEnter={() => handleSkillEnter(index)}
+                onMouseLeave={handleSkillLeave}
               >
                 {/* Skill Icon Container */}
                 <div 
-                  className={`relative p-2 rounded-lg backdrop-blur-sm border border-white/20 transition-all duration-300 ${
+                  className={`relative p-2 rounded-lg backdrop-blur-sm border border-white/20 transition-all duration-200 ${
                     activeSkill === index 
                       ? 'bg-gradient-to-br from-violet-500/30 to-purple-600/40 shadow-2xl [box-shadow:0_8px_25px_rgba(164,112,227,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]' 
                       : 'bg-white/10 hover:bg-white/20 shadow-lg [box-shadow:0_4px_15px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]'
@@ -135,7 +143,7 @@ export default function Profile() {
                     alt={skill.name}
                     height={skill.size}
                     width={skill.size}
-                    className={`transition-all duration-300 ${
+                    className={`transition-all duration-200 ${
                       activeSkill === index 
                         ? 'drop-shadow-lg brightness-110 [filter:drop-shadow(0_0_10px_rgba(164,112,227,0.7))]' 
                         : 'drop-shadow-md [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.3))]'
@@ -150,7 +158,7 @@ export default function Profile() {
 
                 {/* Floating Tooltip */}
                 <div 
-                  className={`absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-lg backdrop-blur-sm bg-black/80 text-white text-xs font-medium border border-white/20 transition-all duration-300 pointer-events-none shadow-[0_4px_15px_rgba(0,0,0,0.3)] ${
+                  className={`absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-lg backdrop-blur-sm bg-black/80 text-white text-xs font-medium border border-white/20 transition-all duration-200 pointer-events-none shadow-[0_4px_15px_rgba(0,0,0,0.3)] ${
                     activeSkill === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                   }`}
                 >
