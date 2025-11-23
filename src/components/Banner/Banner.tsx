@@ -8,7 +8,7 @@ const items = Array(10).fill("Aurora UI : Coming Soon");
 export default function Banner() {
   // Memoize duplicated items for seamless scroll
   const scrollItems = useMemo(() => [...items, ...items], []);
-  const imagePath = '/Adobe.png';
+  const imagePath = '/infinite-slider/aurora-ui.png';
 
   return (
     <div className="overflow-hidden flex items-center italic font-semibold text-sm sm:text-base md:text-lg bg-white text-black h-8 sm:h-9 md:h-10 w-full">

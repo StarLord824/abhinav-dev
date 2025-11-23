@@ -8,7 +8,7 @@ export default function Profile() {
 
   const skills = [
     { name: 'C++', icon: '/langs/cpp.svg', size: 50 },
-    { name: 'TypeScript', icon: '/langs/Typescript.svg', size: 38 },
+    { name: 'TypeScript', icon: '/langs/typescript.svg', size: 38 },
     { name: 'JavaScript', icon: '/langs/javascript.svg', size: 38 },
     { name: 'Go', icon: '/langs/Go.svg', size: 70 },
     { name: 'Java', icon: '/langs/java.svg', size: 50 },
@@ -18,7 +18,7 @@ export default function Profile() {
   return (
     <div 
       id="profile"
-      className="flex items-center relative top-34 -left-8 h-2/3 w-3/5 [perspective:1000px]"
+      className="flex items-center relative top-38 -left-8 h-2/3 w-3/5 [perspective:1000px]"
     >
       {/* Outer container disables pointer events */}
       <div 

@@ -146,7 +146,7 @@ export default function XpButton({ text, amount, logo, isHighlighted = false }: 
         <div className={amountContainerClasses}>
           {/* Animated Filling Bar */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-violet-600/40 via-purple-500/30 to-violet-600/40"
+            className="absolute inset-0 bg-gradient-to-r from-violet-600/40 via-purple-500/30 to-violet-600/40 overflow-hidden"
             initial={{ width: 0 }}
             animate={{ width: `${fillPercentage}%` }}
             transition={{ 

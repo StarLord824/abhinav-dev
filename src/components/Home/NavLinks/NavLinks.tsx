@@ -1,4 +1,4 @@
-import Navigators from "@/ui/Navigators";
+import Navigators from "@/components/Home/NavLinks/Navigators";
 
 export default function NavLinks() {
   return (
