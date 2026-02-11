@@ -1,14 +1,7 @@
 'use client';
 import { motion } from 'motion/react';
-import { Code2, Trophy, Zap, Target } from 'lucide-react';
 
 export default function IntroHeader() {
-  const stats = [
-    { icon: Code2, label: 'Projects Built', value: '15+', color: 'from-blue-400 to-cyan-400' },
-    { icon: Trophy, label: 'Achievements', value: '3', color: 'from-yellow-400 to-orange-400' },
-    { icon: Zap, label: 'Tech Stack', value: '20+', color: 'from-purple-400 to-pink-400' },
-    { icon: Target, label: 'Experience', value: '2Y', color: 'from-green-400 to-emerald-400' }
-  ];
 
   return (
     <div className="relative mb-8">
@@ -47,10 +40,10 @@ export default function IntroHeader() {
 
                 {/* Personal Note */}
                 <div className="relative">
-                  <div className="absolute -left-2 top-0 text-5xl text-purple-400/10 font-serif leading-none">"</div>
+                  <div className="absolute -left-2 top-0 text-5xl text-purple-400/10 font-serif leading-none">&ldquo;</div>
                   <p className="text-base md:text-lg text-gray-200 leading-relaxed italic pl-6">
                     I love building systems from scratch — from UI interactions to backend architectures. 
-                    Currently exploring <span className="text-cyan-300 font-semibold">GraphQL</span>, <span className="text-purple-300 font-semibold">distributed systems</span>, and <span className="text-pink-300 font-semibold">GenAI engineering</span>.
+                    Currently exploring <span className="text-cyan-300 font-semibold">Rust</span>, <span className="text-purple-300 font-semibold">distributed systems</span>, and <span className="text-pink-300 font-semibold">GenAI engineering</span>.
                   </p>
                 </div>
               </div>
@@ -91,7 +84,7 @@ export default function IntroHeader() {
                     className="h-full bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"
                   />
                 </div>
-                <div className="text-xs text-gray-400 mt-1">75% Complete</div>
+                <div className="text-xs text-gray-400 mt-1">85% Complete</div>
               </div>
             </div>
           </motion.div>

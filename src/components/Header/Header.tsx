@@ -68,7 +68,7 @@ export default function Header() {
       {/* XP Buttons - Stack on mobile, side by side on tablet+ */}
       <div className="w-full md:w-1/2 h-full bg-black/20 rounded-xl flex flex-col sm:flex-row items-center justify-around gap-2 sm:gap-0 py-2 sm:py-0">
         <XpButton logo={'/xpbutton/Polygon.svg'} amount={'2 Years'} text={'XP'} />
-        <XpButton logo={'/xpbutton/Gem.svg'} amount='20+ Projects' text={'PoW'} />
+        <XpButton logo={'/xpbutton/Gem.svg'} amount='15+ Projects' text={'PoW'} />
       </div>
 
       {/* Nav Buttons - Hide on mobile, show on tablet+ */}

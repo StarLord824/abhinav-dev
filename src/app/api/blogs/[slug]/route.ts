@@ -4,14 +4,15 @@ import { blogDataSchema } from "@/types/blogData";
 import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export async function GET(_req: Request, {params}: {params: {slug: string}}) {
+export async function GET(_req: Request, {params}: {params: Promise<{slug: string}>}) {
     //no auth needed;
     // const body = await request.json();
     // console.log(body)
+    const { slug } = await params;
     try{
         const blog = await prisma.blog.findUnique({
             where: {
-                id: Number(params.slug),
+                id: Number(slug),
             },
         });
         if (!blog) {
@@ -28,14 +29,15 @@ export async function GET(_req: Request, {params}: {params: {slug: string}}) {
     }
 }
 
-export async function PUT(request: Request, {params}: {params: {slug: string}}) {
+export async function PUT(request: Request, {params}: {params: Promise<{slug: string}>}) {
     //admin check
+    const { slug } = await params;
     const body = await request.json();
     const blogData = blogDataSchema.parse(body);
     try {
         const blog = await prisma.blog.update({
             where: {
-                slug: params.slug,
+                slug: slug,
             },
             data: {
                 ...blogData,
@@ -59,13 +61,14 @@ export async function PUT(request: Request, {params}: {params: {slug: string}}) 
     }
 }
 
-export async function DELETE({params}: {params: {slug: string}}) {
+export async function DELETE(_req: Request, {params}: {params: Promise<{slug: string}>}) {
     // const body = await request.json();
     // console.log(body)
+    const { slug } = await params;
     try {
         const blog = await prisma.blog.delete({
             where: {
-                slug: params.slug,
+                slug: slug,
             },
         });
         return new Response(JSON.stringify({ blog, message: "Blog deleted successfully" }), {

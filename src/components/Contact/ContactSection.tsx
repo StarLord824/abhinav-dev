@@ -43,7 +43,7 @@ export default function ContactSection() {
             📬 Quest Submission
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind? Let's team up and build something amazing!
+            Have a project in mind? Let&apos;s team up and build something amazing!
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-center"
                 >
-                  ✅ Quest received! I'll get back to you soon.
+                  ✅ Quest received! I&apos;ll get back to you soon.
                 </motion.div>
               )}
             </form>

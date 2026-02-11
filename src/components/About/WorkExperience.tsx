@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from 'motion/react';
-import { Briefcase, X } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 import { useState } from 'react';
 
 const experiences = [
@@ -57,7 +57,7 @@ function ExperienceCard({ experience, index }: { experience: typeof experiences[
       style={{ zIndex: isOpen ? 100 : 1 }}
     >
       <div className="w-full relative bg-gradient-to-br from-slate-900/90 via-cyan-900/20 to-slate-900/90 rounded-xl border-2 border-cyan-400/30 overflow-visible backdrop-blur-sm shadow-lg hover:border-cyan-400/50 transition-all">
-        <div className="h-1 bg-gradient-to-r from-cyan-500 to-blue-600" />
+        {/* <div className="h-1 bg-gradient-to-r from-cyan-500 to-blue-600" /> */}
         
         {/* Animated corner accent */}
         <motion.div
@@ -120,7 +120,7 @@ function ExperienceCard({ experience, index }: { experience: typeof experiences[
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
+                    className="fixed inset-0 bg-black/40 backdrop-bl] rounded-xl"
                     onClick={() => setIsOpen(false)}
                   />
                   

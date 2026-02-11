@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from 'motion/react';
-import { Trophy, Award, X } from 'lucide-react';
+import { Trophy, Award } from 'lucide-react';
 import { useState } from 'react';
 
 const achievements = [
@@ -100,7 +100,7 @@ function AchievementCard({ achievement, index }: { achievement: typeof achieveme
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
+                    className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] rounded-2xl"
                     onClick={() => setIsOpen(false)}
                   />
                   
