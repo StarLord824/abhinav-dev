@@ -1,13 +1,8 @@
-// import prisma from "@/lib/db";
 import { blogDataSchema } from "@/types/blogData";
-// import z from "zod";
-import { Prisma, PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "@/lib/prisma"; // Use Singleton
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/binary";
 
 export async function GET(_req: Request, {params}: {params: Promise<{slug: string}>}) {
-    //no auth needed;
-    // const body = await request.json();
-    // console.log(body)
     const { slug } = await params;
     try{
         const blog = await prisma.blog.findUnique({
@@ -53,7 +48,7 @@ export async function PUT(request: Request, {params}: {params: Promise<{slug: st
     } catch (error : unknown) {
         console.error("PUT /blog error:", error);
 
-        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+        if ((error as PrismaClientKnownRequestError).code === "P2025") {
             return new Response("Blog not found", { status: 404 });
         }
 
@@ -62,8 +57,6 @@ export async function PUT(request: Request, {params}: {params: Promise<{slug: st
 }
 
 export async function DELETE(_req: Request, {params}: {params: Promise<{slug: string}>}) {
-    // const body = await request.json();
-    // console.log(body)
     const { slug } = await params;
     try {
         const blog = await prisma.blog.delete({
@@ -78,7 +71,7 @@ export async function DELETE(_req: Request, {params}: {params: Promise<{slug: st
     } catch (error : unknown) {
         console.error("DELETE /blog error:", error);
 
-        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+        if ((error as PrismaClientKnownRequestError).code === "P2025") {
             return new Response("Blog not found", { status: 404 });
         }
 
