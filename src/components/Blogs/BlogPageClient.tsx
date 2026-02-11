@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "motion/react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useBlogStoreContext } from "@/providers/blog-store-provider"; // Added import
 import { 
   // IconSwords, 
@@ -35,13 +35,13 @@ export default function BlogPageClient() {
   // For this refactor, we will direct everything to the store.
 
   // Memoize handlers to prevent unnecessary re-renders and satisfy lint rules
-  const openModal = (blog: BlogPreview) => {
+  const openModal = useCallback((blog: BlogPreview) => {
     openPreviewModal(blog);
-  };
+  }, [openPreviewModal]);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     closePreviewModal();
-  };
+  }, [closePreviewModal]);
 
   // Handle ESC key to close modal
   useEffect(() => {

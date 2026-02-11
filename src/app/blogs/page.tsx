@@ -17,7 +17,7 @@ export default async function BlogPage() {
     const data = await loadBlogsPreview();
     
     // Validate and parse each blog
-    blogs = data.map((blog) => {
+    blogs = data.map((blog: any) => {
       try {
         return blogPreviewSchema.parse(blog);
       } catch (parseError) {
