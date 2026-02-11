@@ -142,26 +142,60 @@ body::-webkit-scrollbar {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* ========================================
+   Blog Section Color Palette
+   Clean, modern design inspired by game UI
+   ======================================== */
+:root {
+  /* Blog Card Colors */
+  --blog-card-bg: #ffffff;
+  --blog-card-border: #e5e7eb;
+  --blog-card-shadow: rgba(0, 0, 0, 0.08);
+  --blog-card-hover-shadow: rgba(59, 130, 246, 0.15);
+  
+  /* Blog Text Colors */
+  --blog-title: #1f2937;
+  --blog-subtitle: #6b7280;
+  --blog-date: #9ca3af;
+  --blog-category: #3b82f6;
+  
+  /* Blog Accent Colors */
+  --blog-accent-primary: #3b82f6;
+  --blog-accent-secondary: #8b5cf6;
+  --blog-accent-success: #10b981;
+  --blog-accent-warning: #f59e0b;
+  
+  /* Blog Background */
+  --blog-bg-primary: #f9fafb;
+  --blog-bg-secondary: #f3f4f6;
+  
+  /* Blog Interactive */
+  --blog-hover-bg: #f0f9ff;
+  --blog-active-bg: #dbeafe;
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite;
+.dark {
+  /* Dark Mode Blog Colors */
+  --blog-card-bg: #1f2937;
+  --blog-card-border: #374151;
+  --blog-card-shadow: rgba(0, 0, 0, 0.3);
+  --blog-card-hover-shadow: rgba(59, 130, 246, 0.25);
+  
+  --blog-title: #f9fafb;
+  --blog-subtitle: #d1d5db;
+  --blog-date: #9ca3af;
+  --blog-category: #60a5fa;
+  
+  --blog-accent-primary: #60a5fa;
+  --blog-accent-secondary: #a78bfa;
+  --blog-accent-success: #34d399;
+  --blog-accent-warning: #fbbf24;
+  
+  --blog-bg-primary: #111827;
+  --blog-bg-secondary: #1f2937;
+  
+  --blog-hover-bg: #1e3a5f;
+  --blog-active-bg: #1e40af;
 }
 
 /* Custom Scrollbar for About Section */

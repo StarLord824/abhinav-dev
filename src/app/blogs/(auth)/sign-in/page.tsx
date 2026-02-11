@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
-import { signInAction } from "@/app/actions/auth"; // adjust import path
+import { signInAction } from "@/app/actions/auth";
 import { Loader2 } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
@@ -22,10 +23,15 @@ export default function SignIn() {
         <form
           action={async (formData) => {
             try {
+              setError(null);
               await signInAction(formData);
-            } catch ( err : unknown) {
+            } catch (err: unknown) {
               console.error(err);
-              setError("Invalid credentials. Please try again.");
+              if (err instanceof Error) {
+                setError(err.message);
+              } else {
+                setError("Invalid credentials. Please try again.");
+              }
             }
           }}
           className="flex flex-col space-y-5"
@@ -37,6 +43,7 @@ export default function SignIn() {
               name="email"
               placeholder="you@example.com"
               required
+              autoComplete="email"
               className="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
@@ -48,25 +55,28 @@ export default function SignIn() {
               name="password"
               placeholder="••••••••"
               required
+              autoComplete="current-password"
               className="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
           {error && (
-            <p className="text-red-400 text-sm text-center mt-2">{error}</p>
+            <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg">
+              <p className="text-red-400 text-sm text-center">{error}</p>
+            </div>
           )}
 
           <SubmitButton />
         </form>
 
         <p className="text-sm text-zinc-400 text-center mt-6">
-          Don’t have an account?{" "}
-          <a
-            href="/sign-up"
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/blogs/sign-up"
             className="text-indigo-400 hover:text-indigo-300 underline"
           >
             Sign up
-          </a>
+          </Link>
         </p>
       </motion.div>
     </div>

@@ -7,7 +7,7 @@ export default async function AdminBlogPage() {
         headers: await headers()
     })
     if(!session) {
-        redirect("/sign-in") // Redirect to absolute url/sign-in route page
+        redirect("/blogs/sign-in") // Redirect to absolute url/sign-in route page
     }
     return (
         <>
