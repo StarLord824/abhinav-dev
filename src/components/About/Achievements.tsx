@@ -11,20 +11,20 @@ const achievements = [
     rarity: 'Epic',
     points: '+100 pts'
   },
-  {
-    title: 'HackMIT 2024 Winner',
-    description: 'First place among 500+ participants for building an AI-powered code review assistant.',
-    badge: 'Winner',
-    rarity: 'Legendary',
-    points: '+200 pts'
-  },
-  {
-    title: 'Google HashCode 2024',
-    description: 'Ranked in top 15% globally, solving complex optimization problems.',
-    badge: 'Top Performer',
-    rarity: 'Rare',
-    points: '+75 pts'
-  }
+  // {
+  //   title: 'HackMIT 2024 Winner',
+  //   description: 'First place among 500+ participants for building an AI-powered code review assistant.',
+  //   badge: 'Winner',
+  //   rarity: 'Legendary',
+  //   points: '+200 pts'
+  // },
+  // {
+  //   title: 'Google HashCode 2024',
+  //   description: 'Ranked in top 15% globally, solving complex optimization problems.',
+  //   badge: 'Top Performer',
+  //   rarity: 'Rare',
+  //   points: '+75 pts'
+  // }
 ];
 
 function AchievementCard({ achievement, index }: { achievement: typeof achievements[0], index: number }) {

@@ -3,6 +3,7 @@ import { blogPreviewSchema, type BlogPreview } from "@/types/blogData";
 import { loadBlogsPreview } from "@/app/actions/blogs/loadBlogsPreview";
 import BlogPageClient from "@/components/Blogs/BlogPageClient";
 import Link from "next/link";
+import { BlogStoreProvider } from "@/providers/blog-store-provider";
 
 // Force dynamic rendering to ensure fresh data
 export const dynamic = 'force-dynamic';
@@ -123,5 +124,9 @@ export default async function BlogPage() {
   }
 
   // Success State - Render blogs
-  return <BlogPageClient blogs={blogs} />;
+  return (
+    <BlogStoreProvider initialState={{ blogs }}>
+      <BlogPageClient />
+    </BlogStoreProvider>
+  );
 }

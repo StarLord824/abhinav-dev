@@ -1,7 +1,7 @@
 "use client";
-
 import React from "react";
-import { BlogData, BlogContent, TableOfContentItem } from "@/types/blogData";
+import { useBlogStoreContext } from "@/providers/blog-store-provider";
+import { BlogContent, TableOfContentItem } from "@/types/blogData";
 import { motion, useScroll, useSpring } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,13 +13,16 @@ import {
   IconQuote
 } from "@tabler/icons-react";
 
-export default function BlogDetailClient({ blog }: { blog: BlogData }) {
+export default function BlogDetailClient() {
+  const blog = useBlogStoreContext((state) => state.currentBlog);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
+
+  if (!blog) return null; // Should be handled by parent or loading state, but safe guard here.
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-200 font-sans selection:bg-blue-500/30">

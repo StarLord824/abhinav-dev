@@ -2,6 +2,14 @@ import NavLinks from "@/components/Home/NavLinks/NavLinks";
 import Profile from "@/components/Home/Profile";
 import Resume from "@/components/Home/Resume";
 
+import Banner from "@/components/Banner/Banner";
+import ProjectsSection from "@/components/Projects/ProjectsSection";
+import IntroHeader from "@/components/About/IntroHeader";
+import WorkExperience from "@/components/About/WorkExperience";
+import Achievements from "@/components/About/Achievements";
+import StatsSection from "@/components/About/StatsSections";
+import SkillsSection from "@/components/About/SkillsSection";
+
 export default function Home() {
   return (
     <div className="h-screen snap-y snap-proximity overflow-y-scroll font-sans">
@@ -15,20 +23,20 @@ export default function Home() {
         <NavLinks />
       </section>
       
-      {/* <Banner /> */}
+      <Banner />
 
       {/* Projects Section */}
-      {/* <section 
+      <section 
         id="projects" 
         className="snap-start min-h-screen h-auto sm:h-[200vh] w-full bg-green-400 bg-[radial-gradient(white_1.2px,transparent_0.5px)] [background-size:30px_30px] [contain:paint_layout] p-4 sm:p-6 md:p-8"
       >
         <ProjectsSection />
       </section>
       
-      <Banner /> */}
+      <Banner />
 
       {/* About Section */}
-        {/* <section 
+      <section 
           id="about"
           className="snap-start min-h-screen h-[100vh] w-full bg-teal-600 bg-[radial-gradient(white_1.3px,transparent_0.5px)] [background-size:30px_30px] [contain:paint_layout] overflow-y-auto custom-scrollbar"
         >
@@ -47,7 +55,7 @@ export default function Home() {
               
             </div>
           </div>
-        </section> */}
+        </section> 
     </div>
   );
 }

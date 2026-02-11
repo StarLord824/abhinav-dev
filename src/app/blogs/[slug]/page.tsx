@@ -3,6 +3,7 @@ import { blogDataSchema } from "@/types/blogData";
 import { loadBlogBySlug } from "@/app/actions/blogs/loadBlogBySlug";
 import BlogDetailClient from "@/components/Blogs/BlogDetailClient";
 import { IconSwords } from "@tabler/icons-react";
+import { BlogStoreProvider } from "@/providers/blog-store-provider";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -43,7 +44,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     );
   }
 
-  return <BlogDetailClient blog={blog} />;
+  return (
+    <BlogStoreProvider initialState={{ currentBlog: blog }}>
+      <BlogDetailClient />
+    </BlogStoreProvider>
+  );
 }
 
 // Generate metadata for SEO

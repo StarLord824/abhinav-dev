@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import { useState, useEffect, useRef } from "react";
+import { useBlogStoreContext } from "@/providers/blog-store-provider"; // Added import
 import { 
   // IconSwords, 
   IconSparkles,
@@ -13,13 +14,34 @@ import Link from "next/link";
 import Image from "next/image";
 import BlogCard from "./BlogCard";
 
-interface BlogPageClientProps {
-  blogs: BlogPreview[];
-}
+// interface BlogPageClientProps {
+//   // blogs: BlogPreview[]; // blogs are now in the store
+// }
 
-export default function BlogPageClient({ blogs }: BlogPageClientProps) {
+export default function BlogPageClient() {
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+  const { 
+    blogs, 
+    isModalOpen, 
+    selectedPreviewBlog, 
+    openPreviewModal, 
+    closePreviewModal 
+  } = useBlogStoreContext((state) => state);
+
   const [selectedBlog, setSelectedBlog] = useState<BlogPreview | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Sync component local state with store for legacy support if needed, or replace usage entirely.
+  // For this refactor, we will direct everything to the store.
+
+  // Memoize handlers to prevent unnecessary re-renders and satisfy lint rules
+  const openModal = (blog: BlogPreview) => {
+    openPreviewModal(blog);
+  };
+
+  const closeModal = () => {
+    closePreviewModal();
+  };
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -38,17 +60,7 @@ export default function BlogPageClient({ blogs }: BlogPageClientProps) {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
     };
-  }, [isModalOpen]);
-
-  const openModal = (blog: BlogPreview) => {
-    setSelectedBlog(blog);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedBlog(null), 300);
-  };
+  }, [isModalOpen, closePreviewModal]); // check dependency
 
   if (blogs.length === 0) {
     return (
@@ -307,9 +319,9 @@ export default function BlogPageClient({ blogs }: BlogPageClientProps) {
       </section>
 
       {/* BLOG PREVIEW MODAL */}
-      {isModalOpen && selectedBlog && (
+      {isModalOpen && selectedPreviewBlog && (
         <BlogPreviewPane 
-          blog={selectedBlog} 
+          blog={selectedPreviewBlog} 
           onClose={closeModal}
           isOpen={isModalOpen}
         />
