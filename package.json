@@ -26,6 +26,9 @@
     "zod": "^4.1.11",
     "zustand": "^5.0.11"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@prisma/client", "@prisma/engines", "prisma", "@tailwindcss/oxide", "sharp", "unrs-resolver", "better-sqlite3"]
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
