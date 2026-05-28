@@ -60,7 +60,7 @@ export default function BlogPageClient() {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
     };
-  }, [isModalOpen, closePreviewModal]); // check dependency
+  }, [isModalOpen, closeModal]);
 
   if (blogs.length === 0) {
     return (
